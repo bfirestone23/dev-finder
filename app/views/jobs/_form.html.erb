@@ -1,0 +1,20 @@
+<%= form_with model: job do |f| %>
+    <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+    </div>
+
+    <div>
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+    </div>
+
+    <div>
+        <%= f.label :pay %>
+        <%= f.number_field :pay %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+<% end %>
