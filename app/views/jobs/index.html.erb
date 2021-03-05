@@ -1,7 +1,7 @@
-<h1>All Jobs in <%= @location.city %>, <%= @location.state%></h1>
+<h1>All Jobs in <%= @location.city %></h1>
 
 <ol>
     <% @jobs.each do |job| %>
-        <li><%= link_to job.title, job_path(job) %></li>
+        <li><%= link_to job.title, location_job_path(job.location, job) %></li>
     <% end %>
 </ol>
