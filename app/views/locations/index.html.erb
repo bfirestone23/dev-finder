@@ -2,6 +2,6 @@
 
 <ol>
     <% @locations.each do |location| %>
-        <li><%= link_to "#{location.city}, #{location.state}", location_jobs_url(location) %></li>
+        <li><%= link_to "#{location.city}", location_jobs_url(location) %></li>
     <% end %>
 </ol>
