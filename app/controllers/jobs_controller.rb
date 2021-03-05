@@ -16,7 +16,12 @@ class JobsController < ApplicationController
     end
 
     def index
-        @jobs = Job.all
+        if params[:location_id]
+            @location = Location.find_by(params[:location_id])
+            @jobs = @location.jobs
+        else
+            @jobs = Job.all
+        end
     end
 
     def show
