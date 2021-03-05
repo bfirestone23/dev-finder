@@ -15,6 +15,11 @@
     </div>
 
     <div>
+        <%= f.label :location_id %>
+        <%= f.collection_select :location_id, Location.all, :id, :city, include_blank: true %>
+    </div>
+
+    <div>
         <%= f.submit %>
     </div>
 <% end %>
