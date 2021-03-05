@@ -1,5 +1,7 @@
-<h1>All Jobs</h1>
+<h1>All Jobs in <%= @location.city %>, <%= @location.state%></h1>
 
-<% @jobs.each do |job| %>
-    <%= render partial: "job", locals: { job: job } %>
-<% end %>
+<ol>
+    <% @jobs.each do |job| %>
+        <li><%= link_to job.title, job_path(job) %></li>
+    <% end %>
+</ol>
