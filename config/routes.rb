@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :jobs
+  resources :locations do
+    resources :jobs, shallow: true
+  end
 
   root 'application#home'
 
