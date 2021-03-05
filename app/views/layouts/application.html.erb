@@ -13,7 +13,7 @@
   <body>
     <div>
       <% if current_user %>
-        <p>Welcome <%= current_user.email %>!</p>
+        <p>Signed in as <%= current_user.name.nil? ? current_user.email : current_user.name %></p>
         <%= link_to "Home", root_url %>
         <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
         <%= link_to "All Locations", locations_path %>
