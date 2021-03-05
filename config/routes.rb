@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
+  resources :jobs, only: [:new, :create]
+
   resources :locations, only: [:index] do
-    resources :jobs, shallow: true
+    resources :jobs
   end
 
   root 'application#home'
