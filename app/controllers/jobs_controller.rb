@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
     before_action :authenticate_user!
+    before_action :redirect_non_employers, only: [:new, :create, :edit, :update, :destroy]
 
     def new
         @job = Job.new  
@@ -9,7 +10,7 @@ class JobsController < ApplicationController
         @job = Job.new(jobs_params)
 
         if @job.save
-            redirect_to @job
+            redirect_to location_job_path(@job.location, @job)
         else
             render :new
         end
@@ -40,7 +41,13 @@ class JobsController < ApplicationController
     private 
 
     def jobs_params
-        params.require(:job).permit(:title, :description, :pay)
+        params.require(:job).permit(:title, :description, :pay, :location_id)
+    end
+
+    def redirect_non_employers
+        if !current_user.employer
+            redirect_to root_path
+        end
     end
     
 end
