@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_145140) do
+ActiveRecord::Schema.define(version: 2021_03_05_175719) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2021_03_05_145140) do
 
   create_table "locations", force: :cascade do |t|
     t.string "city"
-    t.string "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -38,7 +37,9 @@ ActiveRecord::Schema.define(version: 2021_03_05_145140) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
-    t.integer "location_id"
+    t.boolean "employer"
+    t.string "image"
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider"], name: "index_users_on_provider"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
