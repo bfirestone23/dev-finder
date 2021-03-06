@@ -4,6 +4,7 @@ class JobsController < ApplicationController
 
     def new
         @job = Job.new  
+        @locations = Location.all
     end
 
     def create 
