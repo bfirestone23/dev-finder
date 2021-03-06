@@ -1,15 +1,19 @@
-<div class="container me-auto" style="width: 50%">
-  <h2>Sign up</h2>
+<div class="container justify-content-center">
+  <div>
+    <h2>Sign up</h2>
+  </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <div>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    </div>
 
-    <div class="field">
+    <div class="form-label">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
-    <div class="field">
+    <div class="form-label">
       <%= f.label :password %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -17,20 +21,22 @@
       <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
 
-    <div class="field">
+    <div class="form-label">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="field">
+    <div class="form-label">
       <%= f.label :employer, "Are you an employer?" %>
       <%= f.check_box :employer, autofocus: true %>
-    </div><br>
+    </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: "btn btn-outline-dark" %>
     </div>
   <% end %>
+  <br>
 
   <%= render "devise/shared/links" %>
+
 </div>
