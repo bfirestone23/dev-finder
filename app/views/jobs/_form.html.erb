@@ -1,25 +1,30 @@
 <%= form_with model: job do |f| %>
-    <div>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+
+    <div class="mb-3">
+      <%= render "devise/shared/error_messages", resource: job %>
     </div>
 
-    <div>
-        <%= f.label :description %>
-        <%= f.text_area :description %>
+    <div class="mb-3">
+        <%= f.label :title, class: "form-label" %>
+        <%= f.text_field :title, class: "form-control" %>
     </div>
 
-    <div>
-        <%= f.label :pay %>
-        <%= f.number_field :pay %>
+    <div class="mb-3">
+        <%= f.label :description, class: "form-label" %>
+        <%= f.text_area :description, class: "form-control" %>
     </div>
 
-    <div>
-        <%= f.label :location_id %>
-        <%= f.collection_select :location_id, Location.all, :id, :city, include_blank: true %>
+    <div class="mb-3">
+        <%= f.label :pay, class: "form-label" %>
+        <%= f.number_field :pay, class: "form-control", style: "width: 25%" %>
     </div>
 
-    <div>
-        <%= f.submit %>
+    <div class="mb-3">
+        <%= f.label :location_id, class: "form-label" %>
+        <%= f.collection_select :location_id, @locations, :id, :city, include_blank: true, class: "form-control" %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Post Job", class: "btn btn-outline-primary" %>
     </div>
 <% end %>
