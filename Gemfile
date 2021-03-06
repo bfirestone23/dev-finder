@@ -25,6 +25,7 @@ gem "devise", github: "heartcombo/devise", branch: "master"
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem "omniauth-rails_csrf_protection"
+gem 'bootstrap', '~> 5.0.0.beta2'
 
 
 # Use Active Storage variant
