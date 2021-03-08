@@ -15,21 +15,25 @@
     <div>
       <nav class="container-fluid nav nav-tabs justify-content-center">
         <% if current_user %>
-          <%= link_to "Dev Finder", root_url, class: "btn nav-link", style: "font-weight: bold;" %>
+          <%= link_to "DevFinder", root_url, class: "btn nav-link", style: "font-weight: bold;" %>
           <%= link_to "All Jobs", jobs_url, class: "btn nav-link" %>
+          <%= link_to "My Jobs", user_path(current_user), class: "btn nav-link" %>
           <%= link_to "Locations", locations_path, class: "btn nav-link" %>
-          <%= link_to "Post New Job", new_job_path, class: "btn nav-link" if current_user.employer %>
           <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn nav-link" %>
         <% else %>  
-          <%= link_to "Dev Finder", root_url, class: "btn nav-link", style: "font-weight: bold;" %>
+          <%= link_to "DevFinder", root_url, class: "btn nav-link", style: "font-weight: bold;" %>
           <%= link_to "Sign Up", new_user_registration_path, class: "btn nav-link" unless request.env["PATH_INFO"].include?("sign") %>
           <%= link_to "Log In", new_user_session_path, class: "btn nav-link" unless request.env["PATH_INFO"].include?("sign") %>
         <% end %>
       </nav>
-      <% unless !current_user %>
-        <p class="float-end px-3">Signed in as <%= current_user.name.nil? ? current_user.email : current_user.name %></p>
-      <% end %>
+      <div class="container-fluid">
+        <% unless !current_user %>
+          <span class="float-end px-3">Signed in as: <strong><%= current_user.name.nil? ? current_user.email : current_user.name %></strong></span><br>
+          <span class="float-end px-3">User type: <strong><%= current_user.employer ? "Employer" : "Applicant" %></strong></span>
+        <% end %>
+      </div>
     </div>
+    <br>
     
     <%= yield %>
   </body>
