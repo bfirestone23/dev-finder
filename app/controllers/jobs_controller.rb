@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
     before_action :authenticate_user!
-    before_action :redirect_non_employers, only: [:new, :create, :edit, :update, :destroy]
+    before_action :redirect_non_employers, except: [:show, :index]
 
     def new
         if params[:location_id]
