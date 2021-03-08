@@ -1,7 +1,12 @@
-<h1>All Jobs</h1>
-
-<ol>
-    <% @jobs.each do |job| %>
-        <li><%= link_to job.title, location_job_path(job.location, job) %></li>
+<div class="container-fluid" style="width: 50%">
+    <h1>All Jobs</h1>
+    <% if !@jobs.empty? %>
+        <ol>
+            <% @jobs.each do |job| %>
+                <li><%= link_to job.title, location_job_path(job.location, job) %></li>
+            <% end %>
+        </ol>
+    <% else %>
+        <p>No jobs posted yet.</p>
     <% end %>
-</ol>
+</div>
