@@ -1,14 +1,16 @@
 <div class="container-fluid" style="width: 50%">
     <h1>My Jobs</h1>
-
-    <% if !current_user.jobs.empty? %>
-        <ol>
-            <% current_user.jobs.each do |job| %>
-                <li><%= link_to "#{job.title}", location_job_path(job.location, job) %></li>
-            <% end %>
-        </ol>
-    <% else %>
-        <p>You have not <%= current_user.employer ? "posted" : "applied to"%> any jobs yet.</p>
-    <% end %>
+    <br>
+    <div>
+        <% if !current_user.jobs.empty? %>
+            <ol>
+                <% current_user.jobs.each do |job| %>
+                    <li><%= link_to "#{job.title}", location_job_path(job.location, job) %></li>
+                <% end %>
+            </ol>
+        <% else %>
+            <p>You have not <%= current_user.employer ? "posted" : "applied to"%> any jobs yet.</p>
+        <% end %>
+    </div>
 </div>
 
