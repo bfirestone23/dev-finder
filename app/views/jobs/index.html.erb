@@ -1,9 +1,9 @@
 <div class="container-fluid" style="width: 50%">
     <h1>All Jobs <%= "in #{@location.city}" if @location %></h1>
-
+    <br>
     <div>
         <% if current_user.employer && @location %>
-            <%= link_to "Post Job in #{@location.city}", new_location_job_path(@location), class: "btn btn-outline-dark" %>
+            <%= link_to "Post Job in #{@location.city}", new_location_job_path(@location), class: "btn btn-outline-primary" %>
         <% end %>
     </div>
     <br>
