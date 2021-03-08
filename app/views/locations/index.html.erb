@@ -1,9 +1,11 @@
 <div class="container-fluid" style="width: 50%">
     <h1>All Locations</h1>
-
-    <ol>
-        <% @locations.each do |location| %>
-            <li><%= link_to "#{location.city}", location_jobs_url(location) %></li>
-        <% end %>
-    </ol>
+    <br>
+    <div>
+        <ol>
+            <% @locations.each do |location| %>
+                <li><%= link_to "#{location.city}", location_jobs_url(location) %></li>
+            <% end %>
+        </ol>
+    </div>
 </div>
