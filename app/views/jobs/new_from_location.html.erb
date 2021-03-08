@@ -1,6 +1,7 @@
 <div class="container-fluid justify-content-center" style="width: 50%">
     <div>
         <h1>Create Job</h1>
+        <h5><%= @location.city %></h5>
     </div>
 
     <%= render partial: "form_from_location", locals: { job: @job, location: @location } %>
