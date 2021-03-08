@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :jobs, only: [:new, :create, :index]
 
+
   resources :locations, only: [:index] do
     resources :jobs
   end
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   root 'application#home'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
+  get '/users/:id', to: 'users/users#show', as: 'user'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
