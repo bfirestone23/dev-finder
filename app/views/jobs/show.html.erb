@@ -1,7 +1,8 @@
 <div class="container-fluid" style="width: 50%">
     <h1><%= @job.title %></h1>
     <h5>Posted by: <%= @job.users.where(employer: true).first.email %></h5>
-    <%= link_to "Edit Job", edit_location_job_path(@job.location, @job), class: "btn btn-outline-dark" if current_user == @job.users.where(employer: true).first %>
+    <br>
+    <%= link_to "Edit Job", edit_location_job_path(@job.location, @job), class: "btn btn-outline-primary" if current_user == @job.users.where(employer: true).first %>
     <br><br>
     <div>
         <p>
