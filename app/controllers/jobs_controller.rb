@@ -58,9 +58,26 @@ class JobsController < ApplicationController
     end
 
     def edit
+        @job = Job.find_by(id: params[:id])
+        @location = @job.location
+        @locations = Location.all
     end
 
     def update
+        @job = Job.find_by(id: params[:id])
+
+        @job.update(jobs_params)
+
+        if !params[:job][:city].empty?
+            location = Location.find_or_create_by(city: params[:job][:city])
+            @job.location = location
+        end
+
+        if @job.save
+            redirect_to location_job_path(@job.location, @job)
+        else
+            render :new_from_location
+        end
     end
 
     def destroy
