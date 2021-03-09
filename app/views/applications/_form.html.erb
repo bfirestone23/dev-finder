@@ -5,6 +5,7 @@
     </div>
 
     <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :status, value: "Pending" %>
 
     <div class="mb-3">
         <%= f.label :previous_job, class: "form-label" %>
