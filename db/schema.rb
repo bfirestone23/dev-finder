@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_05_175719) do
+ActiveRecord::Schema.define(version: 2021_03_09_154628) do
+
+  create_table "applications", force: :cascade do |t|
+    t.string "previous_job"
+    t.text "previous_experience"
+    t.integer "years_experience"
+    t.text "cover_letter"
+    t.date "date_available"
+    t.integer "user_id"
+    t.integer "job_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id"], name: "index_applications_on_job_id"
+    t.index ["user_id"], name: "index_applications_on_user_id"
+  end
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
