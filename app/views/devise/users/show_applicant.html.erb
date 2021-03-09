@@ -1,0 +1,15 @@
+<div class="container-fluid" style="width: 50%">
+    <h1>My Applications</h1>
+    <br>
+    <div>
+        <% if !@applications.empty? %>
+            <ol>
+                <% @applications.each do |app| %>
+                    <li><%= link_to "#{app.job.title}", job_application_path(app.job, app) %></li>
+                <% end %>
+            </ol>
+        <% else %>
+            <p>You have not applied to any jobs yet.</p>
+        <% end %>
+    </div>
+</div>
