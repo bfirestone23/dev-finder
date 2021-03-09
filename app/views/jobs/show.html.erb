@@ -6,6 +6,9 @@
         <%= link_to "Edit Job", edit_location_job_path(@job.location, @job), class: "btn btn-outline-primary" if current_user == @job.users.where(employer: true).first %>
         <%= link_to "Delete Job", location_job_path(@job.location, @job), method: :delete, class: "btn btn-outline-primary" if current_user == @job.users.where(employer: true).first %>
     </div>
+    
+    <%= link_to "Apply to #{@job.title}", new_job_application_path(@job), class: "btn btn-outline-primary" if current_user != @job.users.where(employer: true).first %>
+    
 
 
     <br><br>
