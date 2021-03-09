@@ -45,6 +45,7 @@ class JobsController < ApplicationController
     def index
         if params[:location_id]
             @location = Location.find_by(id: params[:location_id])
+            
             if @location
                 @jobs = @location.jobs
             end
