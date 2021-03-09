@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :jobs, only: [:new, :create, :index] do
-    resources :applications
+    resources :applications, except: [:index, :destroy]
   end
 
   resources :locations, only: [:index] do
