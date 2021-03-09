@@ -16,19 +16,14 @@ class ApplicationsController < ApplicationController
         end
     end
 
-    def index 
-    end
-
     def show
+        @application = Application.find_by(id: params[:id])
     end
 
     def edit
     end
     
     def update 
-    end
-
-    def destroy
     end
 
     private
@@ -39,6 +34,7 @@ class ApplicationsController < ApplicationController
             :years_experience, 
             :cover_letter, 
             :date_available,
+            :status,
             :user_id
         )
     end
