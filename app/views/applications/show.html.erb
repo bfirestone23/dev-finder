@@ -1,20 +1,28 @@
 <div class="container-fluid" style="width: 50%">
     <div>
         <h1>Application for <%= @application.job.title %></h1>
+        <h5>Location: <%= @application.job.location.city %></h5>
+        <h5>Submition Date: <%= @application.created_at.strftime("%m/%d/%Y") %></h5>
         <h5>Status: <%= @application.status %></h5>
         <br>
-        <h5>Location: <%= @application.job.location.city %></h5>
-        <h5>Posted by: <%= @application.job.users.where(employer: true).first.email %></h5>
+        <% if @application.status == "Pending" %>
+            <h5>Your Response:</h5> <% if current_user == @application.job.users.where(employer: true).first %>
+                <div class="form-group">
+                    <%= form_with model: @application, url: job_application_path(@application.job, @application), method: :patch do |app| %>
+                        <%= app.select :status, [["Accept","Accepted"], ["Reject", "Rejected"]], { include_blank: :true }, { class: "form-control", style: "width: 25%" } %><br>
+                        <%= app.submit "Submit", class: "btn btn-outline-primary" %>
+                    <% end %>
+                </div>
+            <% end %>
+            <br>
+        <% else %>
+            <p>Your response has been submitted to the applicant.</p>
+        <% end %>
     </div>
-
-    <br><br>
+    <br>
     <div>
         <p>
             <strong>Applicant:</strong> <%= @application.user.name.nil? ? @application.user.email : @application.user.name %>
-        </p>
-
-        <p>
-            <strong>Date Submitted:</strong> <%= @application.created_at.strftime("%m/%d/%Y") %>
         </p>
 
         <p>
