@@ -1,1 +1,44 @@
-show app!
+<div class="container-fluid" style="width: 50%">
+    <div>
+        <h1>Application for <%= @application.job.title %></h1>
+        <h5>Status: <%= @application.status %></h5>
+        <br>
+        <h5>Location: <%= @application.job.location.city %></h5>
+        <h5>Posted by: <%= @application.job.users.where(employer: true).first.email %></h5>
+    </div>
+
+    <br><br>
+    <div>
+        <p>
+            <strong>Applicant:</strong> <%= @application.user.name.nil? ? @application.user.email : @application.user.name %>
+        </p>
+
+        <p>
+            <strong>Date Submitted:</strong> <%= @application.created_at.strftime("%m/%d/%Y") %>
+        </p>
+
+        <p>
+            <strong>Previous Job:</strong> <%= @application.previous_job %>
+        </p>
+
+        <p>
+            <strong>Previous Job:</strong> <%= @application.previous_job %>
+        </p>
+
+        <p>
+            <strong>Previous Experience:</strong> <%= @application.previous_experience %>
+        </p>
+
+        <p>
+            <strong>Years Experience:</strong> <%= @application.years_experience %>
+        </p>    
+
+        <p>
+            <strong>Cover Letter:</strong> <%= @application.cover_letter %>
+        </p>  
+
+        <p>
+            <strong>Date Available:</strong> <%= @application.date_available.strftime("%m/%d/%Y") %>
+        </p> 
+    </div>
+</div>
