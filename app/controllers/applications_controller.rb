@@ -20,10 +20,20 @@ class ApplicationsController < ApplicationController
         @application = Application.find_by(id: params[:id])
     end
 
+    def index
+        @job = Job.find_by(id: params[:job_id])
+        @applications = @job.applications
+    end
+
     def edit
     end
     
     def update 
+        @application = Application.find_by(id: params[:id])
+        @job = Job.find_by(id: params[:job_id])
+
+        @application.update(status: application_params[:status])
+        redirect_to job_applications_path(@job)
     end
 
     private
