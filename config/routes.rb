@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
 
   resources :locations, only: [:index] do
-    resources :jobs
+    resources :jobs do 
+      resources :applications
+    end
   end
 
   root 'application#home'
