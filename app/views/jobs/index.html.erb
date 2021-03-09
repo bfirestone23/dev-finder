@@ -1,4 +1,4 @@
-<div class="container-fluid" style="width: 50%">
+<div class="container-fluid mx-auto" style="width: 50%">
     <h1>All Jobs <%= "in #{@location.city}" if @location %></h1>
     <div>
         <% if current_user.employer && @location %>
@@ -6,15 +6,6 @@
         <% end %>
     </div>
     <br>
-    <div>
-        <% if !@jobs.empty? %>
-            <ol>
-                <% @jobs.each do |job| %>
-                    <li><%= link_to job.title, location_job_path(job.location, job) %></li>
-                <% end %>
-            </ol>
-        <% else %>
-            <p>No jobs posted yet.</p>
-        <% end %>
-    </div>
+    <%= render(partial: "card_index", collection: @jobs, as: :job) || "No jobs posted yet." %>
 </div>
+
