@@ -1,0 +1,8 @@
+<div class="card mx-auto" style="width: 100%">
+    <h5 class="card-header"><%= job.title %> in <%= job.location.city %></h5>
+    <div class="card-body">
+        <p class="card-text"><%= job.description %></p>
+        <%= link_to "View Job", location_job_path(job.location, job), class: "btn btn-outline-primary float-end", style: "width: 25%" %>
+    </div>
+</div>
+<br>
