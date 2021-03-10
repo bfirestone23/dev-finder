@@ -1,0 +1,8 @@
+<div class="card mx-auto">
+    <h5 class="card-header"><%= location.city %></h5>
+    <div class="card-body">
+        <p class="card-text"><%= location.jobs.count %> jobs hiring now!</p>
+        <%= button_to "View Location", location_jobs_path(location), class: "btn btn-outline-primary float-end", method: :get %>
+    </div>
+</div>
+<br>
