@@ -6,7 +6,7 @@
         <h5>Status: <%= @application.status %></h5>
         <br>
         <% if @application.status == "Pending" %>
-            <h5>Your Response:</h5> <% if current_user == @application.job.users.where(employer: true).first %>
+            <h5>Your Response:</h5> <% if current_user == @application.job.user %>
                 <div class="form-group">
                     <%= form_with model: @application, url: job_application_path(@application.job, @application), method: :patch do |app| %>
                         <%= app.select :status, [["Accept","Accepted"], ["Reject", "Rejected"]], { include_blank: :true }, { class: "form-control", style: "width: 25%" } %><br>

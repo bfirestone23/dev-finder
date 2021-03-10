@@ -2,7 +2,7 @@
     <div>
         <h1>Application for <%= @job.title %></h1>
         <h5>Location: <%= @job.location.city %></h5>
-        <h5>Posted by: <%= @job.users.where(employer: true).first.email %></h5>
+        <h5>Posted by: <%= @job.user.email %></h5>
     </div><br>
 
     <%= render partial: "form", locals: { application: @application, job: @job } %>
