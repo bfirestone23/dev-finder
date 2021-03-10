@@ -10,3 +10,4 @@
 Location.create(city: "New York City")
 Location.create(city: "Los Angeles")
 Location.create(city: "Chicago")
+
