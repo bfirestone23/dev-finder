@@ -1,16 +1,6 @@
 <div class="container-fluid" style="width: 50%">
     <h1>My Jobs</h1>
     <br>
-    <div>
-        <% if !@jobs.empty? %>
-            <ol>
-                <% @jobs.each do |job| %>
-                    <li><%= link_to "#{job.title}", location_job_path(job.location, job) %></li>
-                <% end %>
-            </ol>
-        <% else %>
-            <p>You have not posted any jobs yet.</p>
-        <% end %>
-    </div>
+    <%= render(partial: "jobs/card_index", collection: @jobs, as: :job) || "You havent posted any jobs yet."%>
 </div>
 
