@@ -15,11 +15,6 @@
     </div>
 
     <div class="mb-3">
-        <%= f.label :pay, class: "form-label" %>
-        <%= f.number_field :pay, class: "form-control", style: "width: 25%" %>
-    </div>
-
-    <div class="mb-3">
         <%= f.label :location_id, "Select an existing location:", class: "form-label" %>
         <%= f.collection_select :location_id, @locations, :id, :city, include_blank: true, class: "form-control" %><br>
         <%= f.label :city, "Or enter a new location:", class: "form-label" %>

@@ -87,7 +87,7 @@ class JobsController < ApplicationController
     private 
 
     def jobs_params
-        params.require(:job).permit(:title, :description, :pay, :location_id)
+        params.require(:job).permit(:title, :description, :location_id)
     end
 
     def redirect_non_employers
