@@ -17,7 +17,7 @@ class JobsController < ApplicationController
         if params[:location_id]
             @location = Location.find_by(id: params[:location_id])
             @job = @location.jobs.new(jobs_params)
-            @job.users << current_user
+            @job.user = current_user
 
             if @job.save
                 redirect_to location_job_path(@job.location, @job)
@@ -26,7 +26,7 @@ class JobsController < ApplicationController
             end
         else
             @job = Job.new(jobs_params)
-            @job.users << current_user
+            @job.user = current_user
             
             if !params[:job][:city].empty?
                 location = Location.find_or_create_by(city: params[:job][:city])
@@ -45,10 +45,7 @@ class JobsController < ApplicationController
     def index
         if params[:location_id]
             @location = Location.find_by(id: params[:location_id])
-            
-            if @location
-                @jobs = @location.jobs
-            end
+            @jobs = @location.jobs
         else
             @jobs = Job.all
         end

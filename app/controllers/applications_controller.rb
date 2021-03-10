@@ -6,7 +6,7 @@ class ApplicationsController < ApplicationController
 
     def create 
         job = Job.find_by(id: params[:job_id])
-        job.users << current_user
+        
         @application = job.applications.new(application_params)
         
         if @application.save

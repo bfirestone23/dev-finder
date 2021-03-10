@@ -3,7 +3,7 @@ class Users::UsersController < ApplicationController
 
     def show
         if current_user.employer 
-            @jobs = current_user.jobs
+            @jobs = Job.where(user_id: current_user.id)
             render 'devise/users/show_employer'
         else
             @applications = current_user.applications
