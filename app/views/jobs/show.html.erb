@@ -1,6 +1,6 @@
 <div class="container-fluid" style="width: 50%">
     <h1><%= @job.title %></h1>
-    <h5>Posted by: <%= @job.user.email %></h5>
+    <h5>Posted by: <%= @job.user.name %></h5>
     <br>
     <% if current_user == @job.user %>
         <div class="btn-group">
@@ -21,7 +21,7 @@
         </p>
 
         <p>
-            <strong>Description:</strong> <%= @job.description %>
+            <strong>Description:</strong> <%= simple_format(@job.description) %>
         </p>  
     </div>
 </div>
