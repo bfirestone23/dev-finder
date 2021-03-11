@@ -1,36 +1,36 @@
 <div class="container-fluid" style="width: 50%">
     <div>
-        <h1>Application for <%= @application.job.title %></h1>
-        <h5>Location: <%= @application.job.location.city %></h5>
-        <h5>Submition Date: <%= @application.created_at.strftime("%m/%d/%Y") %></h5>
-        <h5>Status: <%= @application.status %></h5>
+        <h1>Application for <%= @application.job.title %></h1><br>
+        <div>
+            <h5>Employer: <%= @application.job.user.name %></h5>
+            <h5>Location: <%= @application.job.location.city %></h5>
+            <h5>Submition Date: <%= @application.created_at.strftime("%m/%d/%Y") %></h5>
+            <h5>Status: <%= @application.status %></h5>
+        </div>
         <br>
-        <% if @application.status == "Pending" %>
-            <h5>Your Response:</h5> <% if current_user == @application.job.user %>
-                <div class="form-group">
-                    <%= form_with model: @application, url: job_application_path(@application.job, @application), method: :patch do |app| %>
-                        <%= app.select :status, [["Accept","Accepted"], ["Reject", "Rejected"]], { include_blank: :true }, { class: "form-control", style: "width: 25%" } %><br>
-                        <%= app.submit "Submit", class: "btn btn-outline-primary" %>
-                    <% end %>
-                </div>
+        <% if @application.job.user == current_user %>
+            <% if @application.status != "Pending" %>
+                <h5>Your Response: <% if current_user == @application.job.user %></h5>
+                    <div class="form-group">
+                        <%= form_with model: @application, url: job_application_path(@application.job, @application), method: :patch do |app| %>
+                            <%= app.select :status, [["Accept","Accepted"], ["Reject", "Rejected"]], { include_blank: :true }, { class: "form-control", style: "width: 25%" } %><br>
+                            <%= app.submit "Submit", class: "btn btn-outline-primary" %>
+                        <% end %>
+                    </div>
+                <% end %>
+                <br>
+            <% else %>
+                <p>Your response has been submitted to the applicant.</p>
             <% end %>
-            <br>
-        <% else %>
-            <p>Your response has been submitted to the applicant.</p>
         <% end %>
     </div>
-    <br>
     <div>
         <p>
             <strong>Applicant:</strong> <%= @application.user.name.nil? ? @application.user.email : @application.user.name %>
         </p>
 
         <p>
-            <strong>Previous Job:</strong> <%= @application.previous_job %>
-        </p>
-
-        <p>
-            <strong>Previous Job:</strong> <%= @application.previous_job %>
+            <strong>Previous Role:</strong> <%= @application.previous_job %>
         </p>
 
         <p>
