@@ -1,0 +1,5 @@
+<div class="container-fluid" style="width: 50%">
+    <h1>Companies</h1>
+    <br>
+    <%= render(partial: "devise/users/card_index", collection: @users, as: :user) || "No employers have signed up yet." %>
+</div>
