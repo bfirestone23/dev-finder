@@ -1,7 +1,7 @@
 <div class="card mx-auto">
     <h5 class="card-header"><%= job.title %> in <%= job.location.city %></h5>
     <div class="card-body">
-        <p class="card-text"><%= job.description %></p>
+        <p class="card-text"><%= job.description[0...200] + "..." %></p>
         <%= button_to "View Job", location_job_path(job.location, job), class: "btn btn-outline-primary float-end", method: :get %>
     </div>
 </div>
