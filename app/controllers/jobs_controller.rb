@@ -1,21 +1,22 @@
 class JobsController < ApplicationController
     before_action :authenticate_user!
-    before_action :redirect_non_employers, except: [:show, :index]
+    before_action :redirect_applicants, except: [:show, :index]
+    before_action :find_job, only: [:show, :edit, :update, :destroy]
 
     def new
         if params[:location_id]
-            @location = Location.find_by(id: params[:location_id])
+            set_location
             @job = @location.jobs.new 
             render :new_from_location
         else
             @job = Job.new  
-            @locations = Location.all
+            get_all_locations
         end
     end
 
     def create 
         if params[:location_id]
-            @location = Location.find_by(id: params[:location_id])
+            set_location
             @job = @location.jobs.new(jobs_params)
             @job.user = current_user
 
@@ -28,15 +29,12 @@ class JobsController < ApplicationController
             @job = Job.new(jobs_params)
             @job.user = current_user
             
-            if !params[:job][:city].empty?
-                location = Location.find_or_create_by(city: params[:job][:city])
-                @job.location = location
-            end
+            find_or_create_new_location
 
             if @job.save
                 redirect_to location_job_path(@job.location, @job)
             else
-                @locations = Location.all
+                get_all_locations
                 render :new
             end
         end
@@ -44,32 +42,25 @@ class JobsController < ApplicationController
 
     def index
         if params[:location_id]
-            @location = Location.find_by(id: params[:location_id])
-            @jobs = @location.jobs
+            set_location
+            @jobs = @location.jobs.order(created_at: :desc)
         else
-            @jobs = Job.all
+            @jobs = Job.all.order(created_at: :desc)
         end
     end
 
     def show
-        @job = Job.find_by(id: params[:id])
     end
 
     def edit
-        @job = Job.find_by(id: params[:id])
         @location = @job.location
-        @locations = Location.all
+        get_all_locations
     end
 
     def update
-        @job = Job.find_by(id: params[:id])
-
         @job.update(jobs_params)
 
-        if !params[:job][:city].empty?
-            location = Location.find_or_create_by(city: params[:job][:city])
-            @job.location = location
-        end
+        find_or_create_new_location
 
         if @job.save
             redirect_to location_job_path(@job.location, @job)
@@ -79,21 +70,37 @@ class JobsController < ApplicationController
     end
 
     def destroy
-        @job = Job.find_by(id: params[:id])
         @job.destroy
         redirect_to jobs_url, notice: "Job was successfully deleted."
     end
 
     private 
-
     def jobs_params
         params.require(:job).permit(:title, :description, :location_id)
     end
 
-    def redirect_non_employers
-        if !current_user.employer
-            redirect_to root_path
+    def find_or_create_new_location
+        if !params[:job][:city].empty?
+            location = Location.find_or_create_by(city: params[:job][:city])
+            @job.location = location
         end
     end
-    
+
+    def find_job
+        @job = Job.find_by(id: params[:id])
+    end
+
+    def set_location
+        @location = Location.find_by(id: params[:location_id])
+    end
+
+    def get_all_locations
+        @locations = Location.all
+    end
+
+    def redirect_applicants
+        if !current_user.employer
+            redirect_to root_path, notice: "You do not have access to that page."
+        end
+    end
 end
