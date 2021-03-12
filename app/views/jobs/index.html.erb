@@ -1,10 +1,6 @@
 <div class="container-fluid" style="width: 50%">
     <h1>All Jobs <%= "in #{@location.city}" if @location %></h1>
-    <div>
-        <% if current_user.employer && @location %>
-            <br><%= button_to "Post Job in #{@location.city}", new_location_job_path(@location), class: "btn btn-outline-primary", method: :get %>
-        <% end %>
-    </div>
+    <%= post_job_button(@location) %>
     <br>
     <%= render(partial: "card_index", collection: @jobs, as: :job) || "No jobs posted yet." %>
 </div>
