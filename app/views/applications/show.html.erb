@@ -4,7 +4,7 @@
         <div>
             <h5>Employer: <%= @application.job.user.name %></h5>
             <h5>Location: <%= @application.job.location.city %></h5>
-            <h5>Submition Date: <%= @application.created_at.strftime("%m/%d/%Y") %></h5>
+            <h5>Submition Date: <%= created_date(@application) %></h5>
             <h5>Status: <%= @application.status %></h5>
         </div>
         <br>
