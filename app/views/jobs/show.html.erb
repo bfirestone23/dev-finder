@@ -1,19 +1,12 @@
 <div class="container-fluid" style="width: 50%">
-    <h1><%= @job.title %></h1>
-    <h5>Posted by <%= @job.user.name %></h5>
-    <h5>Located in <%= @job.location.city %></h5>
+    <div>
+        <h1><%= @job.title %></h1>
+        <h5>Posted by <%= @job.user.name %></h5>
+        <h5>Located in <%= @job.location.city %></h5>
+    </div>
     <br>
-    <% if current_user == @job.user %>
-        <div class="btn-group">
-            <%= link_to "Review Applications (#{@job.applications.count})", job_applications_path(@job), class: "btn btn-outline-primary" %>
-            <%= link_to "Edit Job", edit_location_job_path(@job.location, @job), class: "btn btn-outline-primary" %>
-            <%= link_to "Delete Job", location_job_path(@job.location, @job), method: :delete, class: "btn btn-outline-primary" %>
-        </div><br><br>
-    <% end %>
-    
-    <% if !current_user.employer %>
-        <%= link_to "Apply to #{@job.title}", new_job_application_path(@job), class: "btn btn-outline-primary" %><br><br>
-    <% end %>
+
+    <%= user_controls(@job) %>
 
     <div>
         <h5>Job Description:</h5>
