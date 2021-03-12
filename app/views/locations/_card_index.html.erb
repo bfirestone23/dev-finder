@@ -3,7 +3,7 @@
     <div class="card-body">
         <%= job_company_count(location) %>
         <%= open_positions(location) %>
-        <%= button_to "View Location", location_jobs_path(location), class: "btn btn-outline-primary float-end", method: :get %>
+        <%= button_to "View Jobs in #{location.city}", location_jobs_path(location), class: "btn btn-outline-primary float-end", method: :get %>
     </div>
 </div>
 <br>
