@@ -35,6 +35,7 @@
 .env
 NOTES.md
 spec.md
+config/credentials.yml.enc
 
 /public/packs
 /public/packs-test
@@ -42,3 +43,4 @@ spec.md
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
