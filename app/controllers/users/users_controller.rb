@@ -18,7 +18,7 @@ class Users::UsersController < ApplicationController
     end
 
     def index
-        @users = User.where(employer: true).order(:name)
+        @users = User.employers.order(:name)
         render 'devise/users/index'
     end
 end
