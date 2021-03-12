@@ -2,13 +2,6 @@
     <div class="text-center pt-5">
         <h1 class="display-3">Welcome to DevFinder</h1>
         <h6 class="text-muted float-end">Connecting developers with employers, one hire at a time.</h6><br><br><br>
-        <% if !current_user %>
-            <p class="lead">Sign up or log in above to enter.</p>
-        <% elsif current_user.employer %>
-            <p class="lead">Click below to post a new job.</p>
-            <%= button_to "Post Job", new_job_path, method: :get, class: "btn btn-outline-primary" %>
-        <% else %>
-            <p class="lead">Click a link above to view jobs by company or by location.</p>
-        <% end %>
+        <%= welcome_text %>
     </div>
 </div>
