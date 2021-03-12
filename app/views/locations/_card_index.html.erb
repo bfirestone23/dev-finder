@@ -1,7 +1,7 @@
 <div class="card mx-auto">
     <h5 class="card-header"><%= location.city %></h5>
     <div class="card-body">
-        <h6 class="card-title"><%= location.jobs.count %> jobs hiring now!</h6><br>
+        <h6 class="card-title"><%= location.jobs.count %> jobs from <%= location.users.uniq.count %> <%= location.users.uniq.count > 1 ? "companies" : "company" %> hiring now!</h6><br>
         <h6 class="card-title"><%= "Open positions:" if location.jobs.count > 0 %></h6>
         <p class="card-text"><%= location.jobs.map {|j| j.title }.join(", ") %></p>
         <%= button_to "View Location", location_jobs_path(location), class: "btn btn-outline-primary float-end", method: :get %>
