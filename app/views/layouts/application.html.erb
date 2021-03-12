@@ -11,20 +11,20 @@
 
   </head>
 
-  <body class="container-fluid">
+  <body class="container-fluid justify-content-center">
     <div>
-      <nav class="container-fluid nav nav-tabs justify-content-center">
+      <nav class="container-fluid nav nav-tabs bg-dark justify-content-center">
         <% if current_user %>
-          <%= link_to "DevFinder", root_url, class: "btn nav-link", style: "font-weight: bold;" %>
-          <%= link_to "All Jobs", jobs_url, class: "btn nav-link" %>
-          <%= link_to current_user.employer ? "My Jobs" : "My Applications", user_path(current_user), class: "btn nav-link" %>
-          <%= link_to "Companies", users_path, class: "btn nav-link" %>
-          <%= link_to "Locations", locations_path, class: "btn nav-link" %>
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn nav-link" %>
+          <%= link_to "DevFinder", root_url, class: "btn btn-outline-secondary nav-link", style: "font-weight: bold;" %>
+          <%= link_to "All Jobs", jobs_url, class: "btn btn-outline-secondary nav-link" %>
+          <%= link_to "Companies", users_path, class: "btn  btn-outline-secondary nav-link" %>
+          <%= link_to "Locations", locations_path, class: "btn  btn-outline-secondary nav-link" %>
+          <%= link_to current_user.employer ? "My Jobs" : "My Applications", user_path(current_user), class: "btn  btn-outline-secondary nav-link" %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn  btn-outline-secondary nav-link" %>
         <% else %>  
-          <%= link_to "DevFinder", root_url, class: "btn nav-link", style: "font-weight: bold;" %>
-          <%= link_to "Sign Up", new_user_registration_path, class: "btn nav-link" unless request.env["PATH_INFO"].include?("sign") %>
-          <%= link_to "Log In", new_user_session_path, class: "btn nav-link" unless request.env["PATH_INFO"].include?("sign") %>
+          <%= link_to "DevFinder", root_url, class: "btn btn-outline-secondary nav-link", style: "font-weight: bold;" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn  btn-outline-secondary nav-link" unless request.env["PATH_INFO"].include?("sign") %>
+          <%= link_to "Log In", new_user_session_path, class: "btn  btn-outline-secondary nav-link" unless request.env["PATH_INFO"].include?("sign") %>
         <% end %>
       </nav>
       <br>
@@ -33,12 +33,12 @@
           <span class="float-end px-3"><%= flash[:notice] %><br></span><br>
         <% end %>
       </div>
-      <div class="container-fluid">
-        <% unless !current_user %>
-          <span class="float-end px-3">Signed in as: <strong><%= current_user.name.nil? ? current_user.email : current_user.name %></strong></span><br>
-          <span class="float-end px-3">User type: <strong><%= current_user.employer ? "Employer" : "Applicant" %></strong></span>
-        <% end %>
-      </div>
+      <% unless !current_user %>
+        <div class="float-end text-center card bg-light" style="width: 20%">
+            <span class="card-text">Signed in as: <strong><%= current_user.name.nil? ? current_user.email : current_user.name %></strong></span>
+            <span class="card-text">User type: <strong><%= current_user.employer ? "Employer" : "Applicant" %></strong></span>
+        </div>
+      <% end %>
     </div>
     <br>
     
