@@ -2,7 +2,9 @@ module UsersHelper
 
     def user_location_count(user)
         if user.jobs.empty?
-            render "devise/users/no_results"
+            content_tag :p, class: "card-title" do
+                "No jobs posted for this employer."
+            end
         else
             render partial: "devise/users/job_locations_count", locals: { user: user }
         end
@@ -14,6 +16,12 @@ module UsersHelper
         end
     end
 
+    def view_jobs_button(user)
+        unless user.jobs.empty?
+            button_to "View Jobs", user_path(user), class: "btn btn-outline-primary float-end", method: :get
+        end
+    end
+
     def location_locations(user)
         user.locations.uniq.count > 1 ? "locations" : "location"
     end
@@ -22,7 +30,7 @@ module UsersHelper
         if current_user == job.user 
             render partial: "jobs/controls/employer_controls", locals: { job: job }
         else
-            render partial: "jobs/controls/applicant_controls", locals: { job: job }
+            link_to "Apply to #{job.title}", new_job_application_path(job), class: "btn btn-outline-primary"
         end
     end
 
