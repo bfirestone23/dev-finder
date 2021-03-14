@@ -3,7 +3,7 @@
     <div class="card-body">
         <h6 class="card-text">Date Submitted: <%= created_date(application) %></h6>
         <h6 class="card-text">Status: <%= application.status %></h6>
-        <%= button_to "View Application", job_application_path(application.job, application), class: "btn btn-outline-primary float-end", method: :get %>
+        <%= view_application_button(application) %>
     </div>
 </div>
 <br>
