@@ -10,4 +10,14 @@ module ApplicationsHelper
         end
     end
 
+    def view_application_button(application)
+        if application.job 
+            render "applications/button_view_app", application: application 
+        else
+            content_tag :p, class: "float-end" do 
+                "This job is no longer available."
+            end
+        end
+    end
+
 end
