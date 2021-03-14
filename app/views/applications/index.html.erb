@@ -1,15 +1,5 @@
 <div class="container-fluid" style="width: 50%">
     <h1>Applications for <%= @job.title %></h1>
-
-    <div>
-        <% if !@applications.empty? %>
-            <ol>
-                <% @applications.each do |app| %>
-                    <li><%= link_to "#{app.user.email} - #{app.status}", job_application_path(@job, app) %></li>
-                <% end %>
-            </ol> 
-        <% else %>
-            <p>No applications yet.</p>
-        <% end %>
-    </div>
+    <br>
+    <%= render partial: "card_index", collection: @applications, as: :application || "No applications yet." %>
 </div>
