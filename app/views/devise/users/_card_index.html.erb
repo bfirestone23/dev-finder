@@ -3,7 +3,7 @@
     <div class="card-body">
         <%= user_location_count(user) %>
         <%= open_positions_by_user(user) %>
-        <%= button_to "View Jobs", user_path(user), class: "btn btn-outline-primary float-end", method: :get %>
+        <%= view_jobs_button(user) %>
     </div>
 </div>
 <br>
