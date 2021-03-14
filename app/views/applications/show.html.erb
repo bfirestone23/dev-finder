@@ -2,22 +2,9 @@
     <div>
         <%= render "header", application: @application %>
         <br>
-        <% if @application.job.user == current_user %>
-            <% if @application.status != "Pending" %>
-                <h5>Your Response: <% if current_user == @application.job.user %></h5>
-                    <div class="form-group">
-                        <%= form_with model: @application, url: job_application_path(@application.job, @application), method: :patch do |app| %>
-                            <%= app.select :status, [["Accept","Accepted"], ["Reject", "Rejected"]], { include_blank: :true }, { class: "form-control", style: "width: 25%" } %><br>
-                            <%= app.submit "Submit", class: "btn btn-outline-primary" %>
-                        <% end %>
-                    </div>
-                <% end %>
-                <br>
-            <% else %>
-                <p>Your response has been submitted to the applicant.</p>
-            <% end %>
-        <% end %>
+        <%= employer_controls(@application) %>
     </div>
+    <br>
 
     <%= render "details", application: @application %>
 </div>
