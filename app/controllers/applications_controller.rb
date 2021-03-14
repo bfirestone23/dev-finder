@@ -11,7 +11,7 @@ class ApplicationsController < ApplicationController
         @application = @job.applications.new(application_params)
         
         if @application.save
-            redirect_to job_application_path(@job, @application)
+            redirect_to job_application_path(@job, @application), notice: "Application successfully submitted."
         else
             render :new
         end
@@ -26,7 +26,7 @@ class ApplicationsController < ApplicationController
     
     def update 
         @application.update(status: application_params[:status])
-        redirect_to job_applications_path(@job)
+        redirect_to job_applications_path(@job), notice: "Application successfully updated."
     end
 
     private

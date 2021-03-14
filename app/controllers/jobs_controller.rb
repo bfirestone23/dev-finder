@@ -21,7 +21,7 @@ class JobsController < ApplicationController
             @job.user = current_user
 
             if @job.save
-                redirect_to location_job_path(@job.location, @job)
+                redirect_to location_job_path(@job.location, @job), notice: "Job successfully created."
             else
                 render :new_from_location
             end
@@ -32,7 +32,7 @@ class JobsController < ApplicationController
             find_or_create_new_location
 
             if @job.save
-                redirect_to location_job_path(@job.location, @job)
+                redirect_to location_job_path(@job.location, @job), notice: "Job successfully created."
             else
                 get_all_locations
                 render :new
@@ -63,7 +63,7 @@ class JobsController < ApplicationController
         find_or_create_new_location
 
         if @job.save
-            redirect_to location_job_path(@job.location, @job)
+            redirect_to location_job_path(@job.location, @job), notice: "Job successfully updated."
         else
             render :new_from_location
         end
@@ -71,7 +71,7 @@ class JobsController < ApplicationController
 
     def destroy
         @job.destroy
-        redirect_to jobs_url, notice: "Job was successfully deleted."
+        redirect_to jobs_url, notice: "Job successfully deleted."
     end
 
     private 
