@@ -1,12 +1,6 @@
 <div class="container-fluid" style="width: 50%">
     <div>
-        <h1>Application for <%= @application.job.title %></h1><br>
-        <div>
-            <h5>Employer: <%= @application.job.user.name %></h5>
-            <h5>Location: <%= @application.job.location.city %></h5>
-            <h5>Submition Date: <%= created_date(@application) %></h5>
-            <h5>Status: <%= @application.status %></h5>
-        </div>
+        <%= render "header", application: @application %>
         <br>
         <% if @application.job.user == current_user %>
             <% if @application.status != "Pending" %>
@@ -24,29 +18,6 @@
             <% end %>
         <% end %>
     </div>
-    <div>
-        <p>
-            <strong>Applicant:</strong> <%= @application.user.name.nil? ? @application.user.email : @application.user.name %>
-        </p>
 
-        <p>
-            <strong>Previous Role:</strong> <%= @application.previous_job %>
-        </p>
-
-        <p>
-            <strong>Previous Experience:</strong> <%= @application.previous_experience %>
-        </p>
-
-        <p>
-            <strong>Years Experience:</strong> <%= @application.years_experience %>
-        </p>    
-
-        <p>
-            <strong>Cover Letter:</strong> <%= @application.cover_letter %>
-        </p>  
-
-        <p>
-            <strong>Date Available:</strong> <%= @application.date_available.strftime("%m/%d/%Y") %>
-        </p> 
-    </div>
+    <%= render "details", application: @application %>
 </div>
