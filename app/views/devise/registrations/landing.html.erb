@@ -1,0 +1,10 @@
+<div class="container-fluid justify-content-center" style="width: 50%">
+    <h2>Would you like to sign up as an Employer or Applicant?</h2>
+    <%= form_with url: landing_path do |f| %>
+        <%= f.label :employer %>
+        <%= f.check_box :employer %>
+        <%= f.label :applicant %>
+        <%= f.check_box :applicant %>
+        <%= f.submit %>
+    <% end %>
+</div>
