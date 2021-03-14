@@ -1,18 +1,6 @@
 <%= form_with model: job, url: location_jobs_path(location) do |f| %>
 
-    <div class="mb-3">
-      <%= render "devise/shared/error_messages", resource: job %>
-    </div>
-
-    <div class="mb-3">
-        <%= f.label :title, class: "form-label" %>
-        <%= f.text_field :title, class: "form-control" %>
-    </div>
-
-    <div class="mb-3">
-        <%= f.label :description, class: "form-label" %>
-        <%= f.text_area :description, class: "form-control" %>
-    </div>
+    <%= render "jobs/forms/shared_fields", job: job, f: f %>
 
     <div class="actions">
         <%= f.submit "Post Job", class: "btn btn-outline-primary" %>
