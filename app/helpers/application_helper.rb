@@ -6,11 +6,15 @@ module ApplicationHelper
 
     def welcome_text
         if !current_user
-            render "no_user_welcome"
+            content_tag :p, class: "lead" do
+                "Sign up or log in above to enter."
+            end
         elsif current_user.employer
             render "employer_welcome"
         else
-            render "applicant_welcome"
+            content_tag :p, class: "lead" do
+                "Click a link above to view jobs by company or by location."
+            end
         end
     end
 
