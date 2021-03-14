@@ -1,8 +1,6 @@
 <div class="card mx-auto">
-    <h5 class="card-header"><%= application.job.title %></h5>
+    <h5 class="card-header">Applicant: <%= application.user.name %></h5>
     <div class="card-body">
-        <h5 class="card-title"><%= application.job.user.name %></h5>
-        <h6 class="card-title"><%= application.job.location.city %></h6><br>
         <h6 class="card-text">Date Submitted: <%= created_date(application) %></h6>
         <h6 class="card-text">Status: <%= application.status %></h6>
         <%= button_to "View Application", job_application_path(application.job, application), class: "btn btn-outline-primary float-end", method: :get %>
