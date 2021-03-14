@@ -2,6 +2,8 @@
     <div>
       <h2>Log in</h2>
     <div>
+    <br>
+    <%= render "devise/shared/links" %>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <% if flash[:alert] %>
@@ -35,9 +37,6 @@
           <%= f.submit "Log in", class: "btn btn-outline-dark" %>
         </div>
     <% end %>
-    <br>
-
-    <%= render "devise/shared/links" %>
 
 </div>
 
