@@ -12,7 +12,7 @@ module ApplicationsHelper
 
     def view_application_button(application)
         if application.job 
-            render "applications/button_view_app", application: application 
+            button_to "View Application", job_application_path(application.job, application), class: "btn btn-outline-primary float-end", method: :get
         else
             content_tag :p, class: "float-end" do 
                 "This job is no longer available."
