@@ -1,0 +1,9 @@
+<h5>Submit your Response: </h5>
+
+<div class="form-group">
+    <%= form_with model: application, url: job_application_path(application.job, application), method: :patch do |app| %>
+        <%= app.select :status, [["Accept","Accepted"], ["Reject", "Rejected"]], { include_blank: :true }, { class: "form-control", style: "width: 25%" } %><br>
+        <%= app.submit "Submit", class: "btn btn-outline-primary" %>
+    <% end %>
+</div>
+<br>
