@@ -27,10 +27,5 @@ module ApplicationHelper
             render "flash"
         end
     end
-
-    def user_detail
-        if current_user
-            render "user_details"
-        end
-    end
+    
 end
