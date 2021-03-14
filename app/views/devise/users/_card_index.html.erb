@@ -1,10 +1,8 @@
 <div class="card mx-auto">
-
     <h4 class="card-header"><%= user.name %></h4>
     <div class="card-body">
-        <h6 class="card-title">Hiring for <%= user.jobs.count %> positions in <%= user.locations.uniq.count %> locations</h6><br>
-        <h6 class="card-title"><%= "Open positions:" if user.jobs.count > 0 %></h6>
-        <p class="card-text"><%= user.jobs.map {|j| j.title }.join(", ") %></p>
+        <%= user_location_count(user) %>
+        <%= open_positions_by_user(user) %>
         <%= button_to "View Jobs", user_path(user), class: "btn btn-outline-primary float-end", method: :get %>
     </div>
 </div>
