@@ -2,7 +2,7 @@ module JobsHelper
 
     def post_job_button(location=nil)
         if current_user.employer && location
-             render partial: "jobs/controls/post_job_by_location", locals: { location: location }
+             render "jobs/controls/post_job_by_location", location: location
         end
     end
 
