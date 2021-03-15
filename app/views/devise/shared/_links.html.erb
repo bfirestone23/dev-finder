@@ -7,12 +7,7 @@
 <% end %>
 
 <div class="">
-  <%- if devise_mapping.omniauthable? %>
-    <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, class: "btn btn-primary btn-md" %>
-      <span class="text-muted">(Applicants only)</span>
-    <% end %>
-  <% end %>
+  <%= render "devise/shared/facebook_button" %>
 
   <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
     <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-primary btn-md" %>
