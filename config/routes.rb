@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   root 'application#home'
 
   devise_scope :user do 
-    get '/confirm', to: 'users/omniauth_callbacks#landing', as: 'landing'
-    post '/confirm/:params', to: 'users/omniauth_callbacks#facebook'
+    get '/confirm', to: 'users/omniauth_callbacks#landing', as: 'get_landing'
+    post '/confirm', to: 'users/omniauth_callbacks#add_to_session', as: 'sending'
+    get '/facebook', to: 'users/omniauth_callbacks#staging', as: 'staging'
   end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
