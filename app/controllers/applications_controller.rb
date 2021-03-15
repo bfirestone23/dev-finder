@@ -2,6 +2,7 @@ class ApplicationsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_job, only: [:new, :create, :index, :update]
     before_action :find_application, only: [:show, :update]
+    before_action :redirect_employers, only: [:new, :create]
 
     def new 
         @application = @job.applications.build
