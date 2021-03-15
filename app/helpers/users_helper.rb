@@ -6,13 +6,13 @@ module UsersHelper
                 "No jobs posted for this employer."
             end
         else
-            render partial: "devise/users/job_locations_count", locals: { user: user }
+            render "devise/users/job_locations_count", user: user
         end
     end
 
     def open_positions_by_user(user)
         if user.jobs.count > 0
-            render partial: "devise/users/open_positions", locals: { user: user }
+            render "devise/users/open_positions", user: user
         end
     end
 
@@ -27,10 +27,10 @@ module UsersHelper
     end
 
     def user_controls(job)
-        if current_user == job.user 
-            render partial: "jobs/controls/employer_controls", locals: { job: job }
-        else
+        if current_user != job.user && !current_user.employer
             link_to "Apply to #{job.title}", new_job_application_path(job), class: "btn btn-outline-primary"
+        elsif current_user == job.user 
+            render "jobs/controls/employer_controls", job: job
         end
     end
 
