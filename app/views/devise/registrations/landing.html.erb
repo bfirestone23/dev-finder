@@ -1,10 +1,12 @@
-<div class="container-fluid justify-content-center" style="width: 50%">
+<div class="container-fluid text-center" style="width: 50%">
     <h2>Would you like to sign up as an Employer or Applicant?</h2>
-    <%= form_with url: landing_path do |f| %>
-        <%= f.label :employer %>
-        <%= f.check_box :employer %>
-        <%= f.label :applicant %>
-        <%= f.check_box :applicant %>
-        <%= f.submit %>
+    <br>
+    <%= form_with url: sending_path do |f| %>
+        <%= f.label :employer, class: "form-check-label" %>
+        <%= radio_button_tag :employer, 1, class: "form-check-input" %>
+        <%= f.label :employer, "Applicant", class: "form-check-label" %>
+        <%= radio_button_tag :employer, 0, class: "form-check-input" %>
+        <br><br>
+        <%= f.submit "Submit", class: "btn btn-outline-primary" %>
     <% end %>
 </div>
