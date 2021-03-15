@@ -6,7 +6,7 @@ module LocationsHelper
                 "No jobs posted for this location."
             end
         else
-            render partial: "locations/job_company_count", locals: { location: location }
+            render "locations/job_company_count", location: location
         end
     end
 
@@ -18,7 +18,7 @@ module LocationsHelper
 
     def open_positions_by_location(location)
         if location.jobs.count > 0
-            render partial: "locations/open_positions", locals: { location: location }
+            render "locations/open_positions", location: location
         end
     end
 
