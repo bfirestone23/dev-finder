@@ -16,10 +16,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     def landing
+        # Form for user type selection
         render 'devise/registrations/landing'
     end
 
     def add_to_session
+        # Pass user type selection to session hash
         if params[:employer] == "1"
             session[:employer] = 1
         else
@@ -29,6 +31,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     def staging
+        # Link to FB sign-in with user type in session 
         render 'devise/registrations/facebook'
     end
 
