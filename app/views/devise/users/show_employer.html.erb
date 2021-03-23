@@ -1,5 +1,5 @@
 <div class="container-fluid" style="width: 50%">
-    <h1><%= @user.name %>'s current openings</h1>
+    <h1 class="display-5"><%= @user.name %>'s current openings</h1>
     <br>
     <%= render(partial: "jobs/card_index", collection: @jobs, as: :job) || "#{@user.name} hasn't posted any jobs yet."%>
 </div>

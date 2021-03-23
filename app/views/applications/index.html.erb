@@ -1,5 +1,5 @@
 <div class="container-fluid" style="width: 50%">
-    <h1>Applications for <%= @job.title %></h1>
+    <h1 class="display-5">Applications for <%= @job.title %></h1>
     <br>
     <%= render partial: "card_index", collection: @applications, as: :application || "No applications yet." %>
 </div>

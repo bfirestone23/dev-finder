@@ -1,7 +1,9 @@
-<h1>Application for <%= application.job.title %></h1><br>
-<div>
-    <h5>Employer: <%= application.job.user.name %></h5>
-    <h5>Location: <%= application.job.location.city %></h5>
-    <h5>Submition Date: <%= created_date(application) %></h5>
-    <h5>Status: <%= application.status %></h5>
+<div class="card bg-light py-2 ps-3">
+    <h1 class="display-5">Application for <%= application.job.title %></h1><br>
+    <div>
+        <h5 class="lead"><strong>Employer</strong>: <%= application.job.user.name %></h5>
+        <h5 class="lead"><strong>Location:</strong> <%= application.job.location.city %></h5>
+        <h5 class="lead"><strong>Submition Date:</strong> <%= created_date(application) %></h5>
+        <h5 class="lead status"><strong>Status:</strong> <%= application.status %></h5>
+    </div>
 </div>

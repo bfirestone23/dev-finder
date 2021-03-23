@@ -1,8 +1,8 @@
 <div class="container-fluid" style="width: 50%">
-    <div>
-        <h1><%= @job.title %></h1>
-        <h5>Posted by <%= @job.user.name %></h5>
-        <h5>Located in <%= @job.location.city %></h5>
+    <div class="card py-2 ps-3 bg-light">
+        <h1 class="display-5"><%= @job.title %></h1>
+        <h2 class="lead">Posted by <%= link_to @job.user.name, user_path(@job.user) %></h2>
+        <h2 class="lead">Located in <%= link_to @job.location.city, location_jobs_path(@job.location) %></h2>
     </div>
     <br>
 
@@ -10,7 +10,7 @@
     <br><br>
 
     <div>
-        <h5>Job Description:</h5>
+        <h5 class="lead">Job Description:</h5>
         <p><%= simple_format(@job.description) %></p>  
     </div>
 </div>

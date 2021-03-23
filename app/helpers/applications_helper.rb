@@ -5,7 +5,9 @@ module ApplicationsHelper
             if application.status == "Pending"
                 render "applications/employer_controls", application: application
             else
-                "Your response has been submitted to the applicant!"
+                content_tag :p, class: "lead" do 
+                    "Your response has been submitted to the applicant!"
+                end
             end
         end
     end

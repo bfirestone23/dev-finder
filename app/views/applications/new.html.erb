@@ -1,8 +1,8 @@
 <div class="container-fluid justify-content-center" style="width: 50%">
     <div>
-        <h1>Application for <%= @job.title %></h1>
-        <h5>Location: <%= @job.location.city %></h5>
-        <h5>Posted by <%= @job.user.name %></h5>
+        <h1 class="display-5">Application for <%= @job.title %></h1>
+        <h5 class="lead">Location: <%= @job.location.city %></h5>
+        <h5 class="lead">Posted by <%= @job.user.name %></h5>
     </div><br>
 
     <%= render partial: "form", locals: { application: @application, job: @job } %>

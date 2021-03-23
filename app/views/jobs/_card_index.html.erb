@@ -1,10 +1,10 @@
 <div class="card mx-auto">
-    <p class="card-header">Posted by <%= job.user.name %></p>
+    <p class="card-header lead">Posted by <strong><%= job.user.name %></strong></p>
     <div class="card-body">
         <p class="float-end">Posted <%= created_date(job) %></p>
         <div>
-            <h5 class="card-title"><%= job.title %></h5>
-            <h6 class="card-title"><%= job.location.city %></h6><br>
+            <h5 class="lead"><strong><%= job.title %></strong></h5>
+            <h6 class=""><%= job.location.city %></h6><br>
         </div>
         <p class="card-text"><%= job.description[0...250] + "..." %></p>
         <%= button_to "View Job", location_job_path(job.location, job), class: "btn btn-outline-primary float-end", method: :get %>

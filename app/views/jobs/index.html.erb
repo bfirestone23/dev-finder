@@ -1,5 +1,5 @@
 <div class="container-fluid" style="width: 50%">
-    <h1>All Jobs <%= "in #{@location.city}" if @location %></h1>
+    <h1 class="display-5">All Jobs <%= "in #{@location.city}" if @location %></h1>
     <%= post_job_button(@location) %>
     <br>
     <%= render(partial: "card_index", collection: @jobs, as: :job) || "No jobs posted yet." %>
