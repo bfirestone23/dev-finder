@@ -1,24 +1,31 @@
-# README
+# DevFinder
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A RESTful web application concept built with Ruby on Rails that allows users to post and apply to developer job openings.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Fork and clone this repository. Then install all dependencies:
 
-* System dependencies
+```bundle install```
 
-* Configuration
+Run the migrations:
 
-* Database creation
+```rails db:migrate```
 
-* Database initialization
+And start up the server:
 
-* How to run the test suite
+```rails s```
 
-* Services (job queues, cache servers, search engines, etc.)
+You can then navigate to http://localhost:3000 to access the application.
 
-* Deployment instructions
+## Usage
 
-* ...
+Create an account or sign in on the homepage. You can sign also choose to sign in via Facebook. Depending on which user type you selected, you can either post job openings or apply to jobs.
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/bfirestone23/dev-finder.
+
+## License
+
+Released under the terms of the [MIT License](https://opensource.org/licenses/MIT).
