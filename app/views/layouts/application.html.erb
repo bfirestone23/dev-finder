@@ -13,12 +13,17 @@
   <body class="container-fluid justify-content-center">
     <div>
       <nav class="container-fluid nav nav-tabs bg-dark justify-content-center">
-        <%= nav_links %>
-      </nav>
-      <br>
-      
-      <%= user_detail %>
 
+        <%= nav_links %>
+        <div>
+          <div class="custom">
+            <%= render "user_detail_new" if current_user %>
+          </div>
+          <% if current_user %>
+            <img id="fb_img" class="img-fluid rounded-circle float-end" style="max-height: 38px;" src="<%= current_user.image %>">
+          <% end %>
+        </div>
+      </nav>
     </div>
     <br>
     <%= flash_errors %>
