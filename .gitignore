@@ -35,6 +35,7 @@
 .env
 NOTES.md
 spec.md
+.DS_Store
 config/credentials.yml.enc
 
 /public/packs
