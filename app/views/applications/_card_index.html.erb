@@ -2,7 +2,7 @@
     <h5 class="card-header lead"><strong>Applicant:</strong> <%= application.user.name %></h5>
     <div class="card-body">
         <p class="card-text">Submitted on <%= created_date(application) %></p>
-        <p class="card-text status"><strong>Status:</strong> <%= application.status %></p>
+        <p class="card-text"><strong>Status:</strong> <%= application.status %></p>
         <%= view_application_button(application) %>
     </div>
 </div>
