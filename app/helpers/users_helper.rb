@@ -1,5 +1,11 @@
 module UsersHelper
 
+    def facebook_image
+        if current_user && current_user.provider == "facebook"
+            image_tag(current_user.image, class: "rounded-circle", id: "fb_img") if current_user && current_user.provider == "facebook"
+        end
+    end
+
     def user_location_count(user)
         if user.jobs.empty?
             content_tag :p, class: "card-title" do
