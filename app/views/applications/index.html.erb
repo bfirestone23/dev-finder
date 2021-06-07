@@ -1,5 +1,9 @@
 <div class="container-fluid" style="width: 50%">
     <h1 class="display-5">Applications for <%= @job.title %></h1>
     <br>
-    <%= render partial: "card_index", collection: @applications, as: :application || "No applications yet." %>
+    <% if @applications.empty? %>
+        <div>No applications yet - check back later.</div>
+    <% else %>
+        <%= render partial: "card_index", collection: @applications, as: :application %>
+    <% end %>
 </div>
