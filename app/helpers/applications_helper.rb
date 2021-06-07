@@ -22,4 +22,14 @@ module ApplicationsHelper
         end
     end
 
+    # def render_applications(applications)
+    #     if applications.empty?
+    #         content_tag :p do
+    #             "No applications yet - check back later."
+    #         end
+    #     else
+    #         render partial: "card_index", collection: applications 
+    #     end
+    # end
+
 end
